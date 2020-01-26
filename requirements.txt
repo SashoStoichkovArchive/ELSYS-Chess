@@ -4,6 +4,7 @@ Click==7.0
 configobj==5.0.6
 Django==3.0.2
 django-crispy-forms==1.8.1
+gunicorn==20.0.4
 litecli==1.2.0
 Pillow==7.0.0
 prompt-toolkit==2.0.10
