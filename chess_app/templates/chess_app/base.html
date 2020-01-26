@@ -63,6 +63,7 @@
             <div class="col-md-4">
                 <div class="content-section">
                     {% if user.is_authenticated %}
+                        <img src="{{ user.profile.image.url }}" alt="User image" class="rounded-circle">
                         <h3>Welcome {{ user.username }}</h3>
                         <p class="text-muted">Here are your boards
                             <ul class="list-group">
