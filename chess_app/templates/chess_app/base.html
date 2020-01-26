@@ -64,7 +64,11 @@
                 <div class="content-section">
                     {% if user.is_authenticated %}
                         <div class="media">
-                            <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" alt="media/default.jpg">
+                            {% if user.profile.image.url %}
+                                <img class="rounded-circle article-img" src="{{ user.profile.image.url }}">
+                            {% else %}
+                                <img class="rounded-circle article-img" src="media/default.jpg">
+                            {% endif %}
                             <div class="media-body">
                                 <h4>Welcome, {{ user.username }}</h4>
                                 <p class="text-muted">Here are your boards</p>
