@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.6"      # current default Python on Travis CI
+  - "3.7"
+  - "3.8"
+install:
+  - pip install -r requirements.txt
+  - python manage.py migrate
+script:
+  - python manage.py test profiles
+deploy:
+  provider: heroku
+  api_key: 478f7899-c243-4cbe-b1d7-45ca435e4eed
+  app: elsys-chess-bg
