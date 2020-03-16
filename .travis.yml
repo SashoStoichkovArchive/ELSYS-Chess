@@ -4,7 +4,7 @@ python:
 install:
   - pip install -r requirements.txt
   - python manage.py migrate
-# script:
+script:
 #   - python manage.py test profiles
 deploy:
   provider: heroku
