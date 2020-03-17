@@ -132,4 +132,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'chess-home'
 LOGIN_URL = 'login'
 
-django_heroku.settings(locals())
+django_heroku.settings(locals(), test_runner=False)
