@@ -5,7 +5,7 @@ install:
   - pip install -r requirements.txt
   - python manage.py migrate
 script:
-#   - python manage.py test profiles
+  - python manage.py test users
 deploy:
   provider: heroku
   api_key: 478f7899-c243-4cbe-b1d7-45ca435e4eed
