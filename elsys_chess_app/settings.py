@@ -26,7 +26,7 @@ SECRET_KEY = 'b2ln_s!+my&)o#zrl1x6gv($6gx3ky2m_hq35u1vwfw3v^2f%9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['elsys-chess.herokuapp.com']
+ALLOWED_HOSTS = ['elsys-chess-bg.herokuapp.com']
 
 
 # Application definition
