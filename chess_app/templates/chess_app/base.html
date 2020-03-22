@@ -75,10 +75,8 @@
                         </div>
                         <p>
                             <ul class="list-group">
-                                <li class="list-group-item list-group-item-light">Board 1</li>
-                                <li class="list-group-item list-group-item-light">Board 2</li>
-                                <li class="list-group-item list-group-item-light">Board 3</li>
-                                <li class="list-group-item list-group-item-light">Board 4</li>
+                                {% comment %} <li class="list-group-item list-group-item-light">Board 1</li> {% endcomment %}
+                                {% block boards %} {% endblock %}
                             </ul>
                         </p>
                     {% else %}

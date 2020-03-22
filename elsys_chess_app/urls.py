@@ -39,6 +39,9 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
 
     path('game/', game_views.create_game_room, name='game'),
+
+    path('game/<str:creator>/<int:game_id>/',
+         game_views.start_game, name='start_game'),
 ]
 
 if settings.DEBUG:
