@@ -21,6 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from users import views as user_views
+from game import views as game_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,6 +38,7 @@ urlpatterns = [
 
     path('profile/', user_views.profile, name='profile'),
 
+    path('game/', game_views.create_game_room, name='game'),
 ]
 
 if settings.DEBUG:
