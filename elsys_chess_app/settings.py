@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['elsys-chess-bg.herokuapp.com']
 INSTALLED_APPS = [
     'chess_app.apps.ChessAppConfig',
     'users.apps.UsersConfig',
+    'game.apps.GameConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
