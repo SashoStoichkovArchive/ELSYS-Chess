@@ -4,6 +4,7 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install python-coveralls
+  - python manage.py makemigrations
   - python manage.py migrate
 script:
   - coverage run manage.py test users
@@ -11,5 +12,8 @@ deploy:
   provider: heroku
   api_key: 478f7899-c243-4cbe-b1d7-45ca435e4eed
   app: elsys-chess-bg
+  run:
+    - python manage.py makemigrations
+    - python manage.py migrate
 after_success:
   - coveralls
