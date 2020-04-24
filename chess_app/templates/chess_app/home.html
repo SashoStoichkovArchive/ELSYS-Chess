@@ -47,36 +47,7 @@
                 </div>
                 <p>
                     <ul class="list-group">
-                        {% if active_users.count > 1 %}
-                            {% for active_user in active_users %}
-                                {% if active_user != user %}
-                                    <a class="btn btn-outline-success" data-toggle="modal" data-target="#senderModal">{{ active_user }}</a>
-                                {% endif %}
-                            {% endfor %}
-                        {% else %}
-                            <h6>There are not any active users!</h6>
-                        {% endif %}
-
-                        <!-- Modal -->
-                        <div id="senderModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
-
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Invite sent!</h4>
-                                        <button type="button" class="close" data-dismiss="modal"  onclick="javascript:window.location='{% url 'game' %}'">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Invite is successfully sent!</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal" onclick="javascript:window.location='{% url 'game' %}'">Close</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                        {% block active_users %} {% endblock %}
                     </ul>
                 </p>
             </div>
@@ -89,6 +60,39 @@
         {% endif %}
     </div>
 {% endblock sidebar %}
+
+{% block active_users %}
+    {% if active_users.count > 1 %}
+        {% for active_user in active_users %}
+            {% if active_user != user %}
+                <a class="btn btn-outline-success" data-toggle="modal" data-target="#senderModal">{{ active_user }}</a>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <h6>There are not any active users!</h6>
+    {% endif %}
+
+    <!-- Modal -->
+    <div id="senderModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Invite sent!</h4>
+                    <button type="button" class="close" data-dismiss="modal"  onclick="javascript:window.location='{% url 'game' %}'">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Invite is successfully sent!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal" onclick="javascript:window.location='{% url 'game' %}'">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock active_users %}
 
 {% block script %}
     <script src="../../static/chess_app/js/chessboard-1.0.0.js"></script>
