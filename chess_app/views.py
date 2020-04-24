@@ -7,8 +7,6 @@ from users.active_users import get_current_users
 def home_page(request):
     active_users = get_current_users()
 
-    print(active_users)
-
     return render(
         request, 'chess_app/home.html',
         {
