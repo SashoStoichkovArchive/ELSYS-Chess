@@ -10,6 +10,18 @@
     <div id="demoBoard" style="width: 400px"></div>
 {% endblock content %}
 
+{% block active_users %}
+    {% if active_users.count > 1 %}
+        {% for active_user in active_users %}
+            {% if active_user != user %}
+                <h6>Invite <a href="">{{ active_user }}</a></h6>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <h6>There are not any active users!</h6>
+    {% endif %}
+{% endblock active_users %}
+
 {% block script %}
     <script src="../../static/chess_app/js/chessboard-1.0.0.js"></script>
     <script src="../../static/chess_app/js/chess.js"></script>

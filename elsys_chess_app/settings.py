@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'active_users.middleware.ActiveUsersSessionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -135,3 +136,5 @@ LOGIN_REDIRECT_URL = 'chess-home'
 LOGIN_URL = 'login'
 
 django_heroku.settings(locals(), test_runner=False)
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
