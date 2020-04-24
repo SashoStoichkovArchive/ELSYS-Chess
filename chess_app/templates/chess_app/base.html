@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'chess_app/css/main.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     {% block css %} {% endblock %}
 
@@ -63,44 +64,7 @@
                 {% block content %}{% endblock %}
             </div>
 
-            <div class="col-md-4">
-                {% if user.is_authenticated %}
-                    <div class="content-section">
-                        <div class="media">
-                            {% comment %} <img class="rounded-circle article-img" src="{{ user.profile.image.url }}"> {% endcomment %}
-                            <div class="media-body">
-                                <h4>Welcome, {{ user.username }}</h4>
-                                <p class="text-muted">Here are your boards</p>
-                            </div>
-                        </div>
-                        <p>
-                            <ul class="list-group">
-                                {% comment %} <li class="list-group-item list-group-item-light">Board 1</li> {% endcomment %}
-                                {% block boards %} {% endblock %}
-                            </ul>
-                        </p>
-                    </div>
-
-                    <div class="content-section">
-                        <div class="media">
-                            <div class="media-body">
-                                <h4>Active users</h4>
-                            </div>
-                        </div>
-                        <p>
-                            <ul class="list-group">
-                                {% block active_users %} {% endblock %}
-                            </ul>
-                        </p>
-                    </div>
-                {% else %}
-                    <div class="content-section">
-                        <h3>Hello GuestUser!</h3>
-                        <p class='text-muted'>Click <a href="{% url 'register' %}">here</a> to register.</p>
-                        <p class='text-muted'>You have an account? Log in <a href="{% url 'login' %}">here</a>.</p>
-                    </div>
-                {% endif %}
-            </div>
+            {% block sidebar %}{% endblock %}
         </div>
     </main>
 

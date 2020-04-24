@@ -8,7 +8,8 @@ def home_page(request):
     active_users = get_current_users()
 
     return render(
-        request, 'chess_app/home.html', {
+        request, 'chess_app/home.html',
+        {
             'title': 'Home', 'active_users': active_users
         }
     )
