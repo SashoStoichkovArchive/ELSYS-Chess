@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'game.apps.GameConfig',
     'crispy_forms',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,6 +74,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'elsys_chess_app.wsgi.application'
+ASGI_APPLICATION = 'elsys_chess_app.routing.application'
 
 
 # Database
