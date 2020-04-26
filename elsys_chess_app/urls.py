@@ -26,6 +26,7 @@ from game import views as game_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('chess_app.urls')),
+    path('chat/', include('chat.urls')),
     path('register/', user_views.register, name='register'),
 
     path('login/',
