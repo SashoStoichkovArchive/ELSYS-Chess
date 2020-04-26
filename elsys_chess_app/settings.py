@@ -74,7 +74,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'elsys_chess_app.wsgi.application'
-ASGI_APPLICATION = 'elsys_chess_app.routing.application'
 
 
 # Database
