@@ -6,7 +6,6 @@ install:
 - pip install python-coveralls
 - python manage.py makemigrations
 - python manage.py migrate
-- docker run -p 6379:6379 -d redis:5
 script:
 - coverage run manage.py test users
 deploy:
