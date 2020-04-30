@@ -4,7 +4,6 @@ from django.utils import timezone
 
 
 def get_current_users():
-    Session.objects.all().delete()
     active_sessions = Session.objects.filter(expire_date__gte=timezone.now())
     print(active_sessions)
     user_id_list = []
