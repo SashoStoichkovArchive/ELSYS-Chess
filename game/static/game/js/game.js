@@ -1,5 +1,47 @@
-// NOTE: this example uses the chess.js library:
-// https://github.com/jhlywa/chess.js
+const username = JSON.parse(document.getElementById('username').textContent);
+
+const roomName = JSON.parse(document.getElementById('room-name').textContent);
+// const chatSocket = new WebSocket(
+//   'ws://'
+//   + window.location.host
+//   + '/ws/chat/'
+//   + roomName
+//   + '/'
+// );
+
+// chatSocket.onmessage = function(e) {
+//   const data = JSON.parse(e.data);
+//   document.querySelector('#chat-log').value += (username + ': ');
+//   document.querySelector('#chat-log').value += (data.message + '\n');
+// };
+
+// chatSocket.onclose = function(e) {
+//   console.error('Chat socket closed unexpectedly');
+// };
+
+// document.querySelector('#chat-message-input').focus();
+// document.querySelector('#chat-message-input').onkeyup = function(e) {
+//   if (e.keyCode === 13) {  // enter, return
+//       document.querySelector('#chat-message-submit').click();
+//   }
+// };
+
+// document.querySelector('#chat-message-submit').onclick = function(e) {
+//   const messageInputDom = document.querySelector('#chat-message-input');
+//   const message = messageInputDom.value;
+//   chatSocket.send(JSON.stringify({
+//       'message': message
+//   }));
+//   messageInputDom.value = '';
+// };
+
+const gameSocket = new WebSocket(
+  'ws://'
+  + window.location.host
+  + '/ws/game/'
+  + roomName
+  + '/'
+);
 
 var board = null
 var game = new Chess()
@@ -70,25 +112,16 @@ function onMouseoutSquare (square, piece) {
 }
 
 function onSnapEnd () {
-  board.position(game.fen())
+  board.position(game.fen());
+  gameSocket.send(JSON.stringify({
+    'fen': game.fen()
+  }));
 }
 
 var config = {
   draggable: true,
   pieceTheme: '/media/img/chesspieces/wikipedia/{piece}.png',
-  position: 'start',
-  onDragStart: onDragStart,
-  onDrop: onDrop,
-  onMouseoutSquare: onMouseoutSquare,
-  onMouseoverSquare: onMouseoverSquare,
-  onSnapEnd: onSnapEnd
-}
-
-var configBlack = {
-  draggable: true,
-  pieceTheme: '/media/img/chesspieces/wikipedia/{piece}.png',
-  orientation: 'black',
-  position: 'start',
+  position: game.fen(),
   onDragStart: onDragStart,
   onDrop: onDrop,
   onMouseoutSquare: onMouseoutSquare,
@@ -97,4 +130,12 @@ var configBlack = {
 }
 
 board = Chessboard('myBoard', config)
-blackBoard = Chessboard('blackBoard', configBlack)
+
+gameSocket.onmessage = function(e) {
+  const data = JSON.parse(e.data);
+  board.position(data.fen);
+};
+
+gameSocket.onclose = function(e) {
+  console.error('Game socket closed unexpectedly');
+};

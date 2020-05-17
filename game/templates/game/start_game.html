@@ -6,16 +6,17 @@
 {% endblock css %}
 
 {% block content %}
-    {% if creator != user %}
-        <h4>{{ creator }} vs {{ user }}</h4>
-        <div id="blackBoard" style="width: 400px"></div>
-    {% else %}
-        <h4>{{ user }} waiting...</h4>
-        <div id="myBoard" style="width: 400px"></div>
-    {% endif %}
-
+    <div id="myBoard" style="width: 400px"></div>
+    {{ user|json_script:"username" }}
+    {{ room_name|json_script:"room-name" }}
+    <!-- <br>
+    <textarea id="chat-log" cols="50" rows="20"></textarea>
+    <input id="chat-message-input" type="text">
+    <input id="chat-message-submit" type="button" value="Send"> -->
 {% endblock content %}
 
+{% block sidebar %}
+{% endblock sidebar %}
 
 {% block script %}
     <script src="{% static 'chess_app/js/chessboard-1.0.0.js' %}"></script>

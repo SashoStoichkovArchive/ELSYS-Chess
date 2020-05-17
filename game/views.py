@@ -20,7 +20,9 @@ def create_game_room(request):
 
 def start_game(request, creator, game_id):
     username = request.user.username
+    room_name = creator + '_' + str(game_id)
 
     return render(request, 'game/start_game.html', {
-        'title': 'Start Game', 'user': username, 'creator': creator
+        'title': 'Start Game', 'user': username,
+        'creator': creator, 'room_name': room_name
     })
