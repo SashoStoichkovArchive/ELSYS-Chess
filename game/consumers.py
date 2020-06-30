@@ -70,21 +70,25 @@ class GameConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
         fen_str = text_data_json['fen']
+        event_type = text_data_json['type_event']
 
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 'type': 'fen_string',
-                'fen': fen_str
+                'fen': fen_str,
+                'type_event': event_type
             }
         )
 
     # Receive message from room group
     async def fen_string(self, event):
         fen_str = event['fen']
+        event_type = event['type_event']
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
-            'fen': fen_str
+            'fen': fen_str,
+            'type_event': event_type
         }))
